@@ -3,12 +3,13 @@ package game;
 import javax.swing.*;
 import java.io.IOException;
 
-public class MySnake {
+public class MySnake implements DataSet{
+    static DataSet dataSet;
     public static void main(String[] args) throws IOException {
         //创建一个窗口
         JFrame frame = new JFrame();
         //指定窗口x和y的位置及窗口的宽度和高度值
-        frame.setBounds(600,100,700,900);
+        frame.setBounds(600,100,WID,HEI);
         //不允许拖拽改变大小
         frame.setResizable(false);
         //当点击窗口关闭按钮，执行操作是退出

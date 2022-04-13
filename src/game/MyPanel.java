@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
-public class MyPanel extends JPanel implements KeyListener, ActionListener {
+public class MyPanel extends JPanel implements KeyListener, ActionListener,DataSet {
 
     /**
       //声明右侧蛇头和身体图片
@@ -47,8 +47,9 @@ public class MyPanel extends JPanel implements KeyListener, ActionListener {
     //声明一个初始值，表示蛇的长度为3
     int len = 3;
     //声明两个数组分别存放x和y坐标的位置
-    int[] snakeX = new int[1008]; //最大值 = 宽度格子 * 高度格子
-    int[] snakeY = new int[1008];
+    int sX = (WID/25)*(HEI/25);
+    int[] snakeX = new int[sX]; //最大值 = 宽度格子 * 高度格子 700/25 = 28 28*28 = 784
+    int[] snakeY = new int[sX];
 
     //声明一个枚举类型变量，标识蛇头方向
     Direction direction = Direction.right;
@@ -65,7 +66,8 @@ public class MyPanel extends JPanel implements KeyListener, ActionListener {
     //声明一个随机变量random
     Random random = new Random();
     //声明食物图片
-    ImageIcon food = new ImageIcon(helper+"images/food.png");
+//    ImageIcon food = new ImageIcon(helper+"images/food.png");
+    ImageIcon food = new ImageIcon(this.getClass().getResource("images/food.png"));
 
     public MyPanel() throws IOException {
         //设定蛇的头部和身体的初始位置
@@ -86,8 +88,8 @@ public class MyPanel extends JPanel implements KeyListener, ActionListener {
         timer.start();
 
         //生成食物坐标
-        foodX = 25 + 25 * random.nextInt(20);
-        foodY = 25 + 25 * random.nextInt(20);
+        foodX = 25 + 25 * random.nextInt(10);
+        foodY = 25 + 25 * random.nextInt(10);
         System.out.println("foodX:"+foodX);
         System.out.println("foodY:"+foodY);
     }
@@ -100,7 +102,7 @@ public class MyPanel extends JPanel implements KeyListener, ActionListener {
         //设置背景颜色
         this.setBackground(Color.red);
         //在画布上添加游戏区域
-        g.fillRect(0,0,700,900);
+        g.fillRect(0,0,WID,HEI);
 
         //添加右侧蛇头
         //right.paintIcon(this,g,100,100);
@@ -185,13 +187,13 @@ public class MyPanel extends JPanel implements KeyListener, ActionListener {
                     //垂直向上移动
                     snakeY[0] -= 25;
                     if(snakeY[0] <= 0){
-                        snakeY[0] = 900;
+                        snakeY[0] = HEI;
                     }
                     break;
                 case bottom:
                     //垂直向下移动
                     snakeY[0] += 25;
-                    if(snakeY[0] >= 900){
+                    if(snakeY[0] >= HEI){
                         snakeY[0] = 0;
                     }
                     break;
@@ -199,14 +201,14 @@ public class MyPanel extends JPanel implements KeyListener, ActionListener {
                     //水平向左移动
                     snakeX[0] -= 25;
                     if(snakeX[0] <= 0){
-                        snakeX[0] = 700;
+                        snakeX[0] = WID;
                     }
                     break;
                 case right:
                     //假如蛇是水平向右移动，则蛇头的值+25
                     snakeX[0] += 25;
                     //判断当前蛇头的值如果超出700，则x值再从0开始
-                    if(snakeX[0] > 700){
+                    if(snakeX[0] > WID){
                         snakeX[0] = 0;
                     }
                     break;
@@ -218,8 +220,8 @@ public class MyPanel extends JPanel implements KeyListener, ActionListener {
                 //蛇的长度加1
                 len++;
                 //重新生成食物的坐标位置
-                foodX = 25 + 25 * random.nextInt(20);
-                foodY = 25 + 25 * random.nextInt(20);
+                foodX = 25 + 25 * random.nextInt(10);
+                foodY = 25 + 25 * random.nextInt(10);
             }
             //重新画组件方法
             repaint();
