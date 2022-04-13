@@ -14,26 +14,35 @@ import java.util.Random;
 public class MyPanel extends JPanel implements KeyListener, ActionListener {
 
     /**
-     * //声明右侧蛇头和身体图片
-     *     ImageIcon right = new ImageIcon(this.getClass().getResource("images/right.png"));
-     *     ImageIcon body = new ImageIcon(this.getClass().getResource("images/body.png"));
-     *
-     *     //声明上，下，左侧蛇头图片
-     *     ImageIcon top = new ImageIcon(this.getClass().getResource("images/top.png"));
-     *     ImageIcon bottom = new ImageIcon(this.getClass().getResource("images/bottom.png"));
-     *     ImageIcon left = new ImageIcon(this.getClass().getResource("images/left.png"));
+      //声明右侧蛇头和身体图片
+          ImageIcon right = new ImageIcon(this.getClass().getResource("images/right.png"));
+          ImageIcon body = new ImageIcon(this.getClass().getResource("images/body.png"));
+
+          //声明上，下，左侧蛇头图片
+          ImageIcon top = new ImageIcon(this.getClass().getResource("images/top.png"));
+          ImageIcon bottom = new ImageIcon(this.getClass().getResource("images/bottom.png"));
+          ImageIcon left = new ImageIcon(this.getClass().getResource("images/left.png"));
      */
     File file = new File("");
     String helper = file.getAbsolutePath()+"/";
 
+//    //声明右侧蛇头和身体图片(绝对路径)用于打包成本地exe文件
+//    ImageIcon right = new ImageIcon(helper+"images/right.png");
+//    ImageIcon body = new ImageIcon(helper+"images/body.png");
+//
+//    //声明上，下，左侧蛇头图片
+//    ImageIcon top = new ImageIcon(helper+"images/top.png");
+//    ImageIcon bottom = new ImageIcon(helper+"images/bottom.png");
+//    ImageIcon left = new ImageIcon(helper+"images/left.png");
+
     //声明右侧蛇头和身体图片
-    ImageIcon right = new ImageIcon(helper+"images/right.png");
-    ImageIcon body = new ImageIcon(helper+"images/body.png");
+    ImageIcon right = new ImageIcon(this.getClass().getResource("images/right.png"));
+    ImageIcon body = new ImageIcon(this.getClass().getResource("images/body.png"));
 
     //声明上，下，左侧蛇头图片
-    ImageIcon top = new ImageIcon(helper+"images/top.png");
-    ImageIcon bottom = new ImageIcon(helper+"images/bottom.png");
-    ImageIcon left = new ImageIcon(helper+"images/left.png");
+    ImageIcon top = new ImageIcon(this.getClass().getResource("images/top.png"));
+    ImageIcon bottom = new ImageIcon(this.getClass().getResource("images/bottom.png"));
+    ImageIcon left = new ImageIcon(this.getClass().getResource("images/left.png"));
 
     //声明一个初始值，表示蛇的长度为3
     int len = 3;
